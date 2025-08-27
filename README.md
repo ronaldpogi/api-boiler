@@ -30,6 +30,6 @@
 * git add .
 * git commit -m "Initial Laravel commit"
 * create git repo
-* git remote add origin https://github.com/USERNAME/myapp.git
+* git remote add origin your-repo-link
 * git branch -M main
 * git push -u origin main
