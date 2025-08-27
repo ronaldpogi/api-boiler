@@ -1,4 +1,4 @@
-# SCAFOLDING PROCESS :
+## SCAFOLDING PROCESS :
 * create laravel app: laravel new myapp
 * create BaseRepository.php: php artisan make:class Repositories/BaseRepository
 * create UserRepository.php: php artisan make:class Repositories/UserRepository
