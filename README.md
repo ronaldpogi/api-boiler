@@ -25,5 +25,11 @@
 * make:request
 * php artisan install:api
 
-
-
+# GIT
+* git init
+* git add .
+* git commit -m "Initial Laravel commit"
+* create git repo
+* git remote add origin https://github.com/USERNAME/myapp.git
+* git branch -M main
+* git push -u origin main
