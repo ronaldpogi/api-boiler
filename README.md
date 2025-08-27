@@ -33,3 +33,15 @@
 * git remote add origin your-repo-link
 * git branch -M main
 * git push -u origin main
+
+# DRY (Don’t Repeat Yourself)
+* Less maintenance → change in one place updates everywhere.
+* Fewer bugs from inconsistent logic.
+* Cleaner, more scalable code.
+
+# SOLID Principles
+* S – Single Responsibility Principle (SRP): A class/module should do one thing and do it well.
+* O – Open/Closed Principle (OCP): Code should be open for extension but closed for modification.
+* L – Liskov Substitution Principle (LSP): Subclasses should be replaceable with their base classes without breaking functionality.
+* I – Interface Segregation Principle (ISP): Don’t force classes to depend on methods they don’t use.
+* D – Dependency Inversion Principle (DIP): Depend on abstractions (interfaces), not concrete implementations.
