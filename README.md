@@ -25,6 +25,14 @@
 * make:request
 * php artisan install:api
 
+# IF YOU WANT AUTHENTICATION SCAFFOLDING
+* composer require laravel/breeze --dev
+* php artisan breeze:install api
+* php artisan migrate
+## OR
+# JUST CLONET THIS API STARTER
+* https://github.com/uguraziz/laravel-12-breeze-api-auth-starter.git
+
 # GIT
 * git init
 * git add .
