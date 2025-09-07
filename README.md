@@ -53,3 +53,7 @@
 * L – Liskov Substitution Principle (LSP): Subclasses should be replaceable with their base classes without breaking functionality.
 * I – Interface Segregation Principle (ISP): Don’t force classes to depend on methods they don’t use.
 * D – Dependency Inversion Principle (DIP): Depend on abstractions (interfaces), not concrete implementations.
+
+# PINT
+* composer require --dev laravel/pint
+* ./vendor/bin/pint --parallel

@@ -29,9 +29,9 @@ class AppServiceProvider extends ServiceProvider
             $defaultMessage = $message ?? __('messages.success');
 
             return response()->json([
-                'status'  => true,
+                'status' => true,
                 'message' => $defaultMessage,
-                'data'    => $data,
+                'data' => $data,
             ], $status);
         });
 
@@ -39,12 +39,10 @@ class AppServiceProvider extends ServiceProvider
             $defaultMessage = $message ?? __('messages.error');
 
             return response()->json([
-                'status'  => false,
+                'status' => false,
                 'message' => $defaultMessage,
-                'errors'  => $errors,
+                'errors' => $errors,
             ], $status);
         });
     }
 }
-
-

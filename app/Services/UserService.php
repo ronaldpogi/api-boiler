@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Repositories\UserRepository;
 use App\Events\UserRegistered;
+use App\Repositories\UserRepository;
 
 class UserService
 {

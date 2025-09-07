@@ -2,8 +2,8 @@
 
 return [
     // request default response
-    'success'      => 'Request processed successfully.',
-    'error'        => 'Something went wrong.',
+    'success' => 'Request processed successfully.',
+    'error' => 'Something went wrong.',
 
     // user respone
     'user_created' => 'User created successfully.',
@@ -11,5 +11,5 @@ return [
     'user_deleted' => 'User deleted successfully.',
     'user_logged_in' => 'User logged in successfully',
     'user_logged_out' => 'User Logged out successfully',
-    'user_invalid_credential' => 'User Invalid Credentials'
+    'user_invalid_credential' => 'User Invalid Credentials',
 ];

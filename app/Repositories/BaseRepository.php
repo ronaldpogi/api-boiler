@@ -37,6 +37,7 @@ abstract class BaseRepository
     {
         $record = $this->model->findOrFail($id);
         $record->update($data);
+
         return $record;
     }
 
