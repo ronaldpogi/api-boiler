@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Models\User;
 use App\Observers\UserObserver;
-use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,18 +24,23 @@ class AppServiceProvider extends ServiceProvider
     {
         User::observe(UserObserver::class);
 
-        Response::macro('success', function ($data = null, $message = 'Success', $status = 200) {
-            return Response::json([
-                'status'  => 'success',
-                'message' => $message,
+        Response::macro('success', function ($data = [], $message = null, $status = 200) {
+            // fallback default message from lang file
+            $defaultMessage = $message ?? __('messages.success');
+
+            return response()->json([
+                'status'  => true,
+                'message' => $defaultMessage,
                 'data'    => $data,
             ], $status);
         });
 
-        Response::macro('error', function ($message = 'Error', $errors = [], $status = 400) {
-            return Response::json([
-                'status'  => 'error',
-                'message' => $message,
+        Response::macro('error', function ($message = null, $status = 400, $errors = []) {
+            $defaultMessage = $message ?? __('messages.error');
+
+            return response()->json([
+                'status'  => false,
+                'message' => $defaultMessage,
                 'errors'  => $errors,
             ], $status);
         });

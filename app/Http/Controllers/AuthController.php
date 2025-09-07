@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
@@ -10,57 +10,50 @@ use App\Repositories\UserRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Hash;
+
 class AuthController extends Controller
 {
     public function __construct(protected UserRepository $userRepository) {}
 
-    /**
-     * Register a new user
-     */
     public function register(RegisterRequest $request): JsonResponse
     {
-        $user = $this->userRepository->create($request->validated());
+        $data = $request->validated();
 
-        // Create token for API usage
+        $data['password'] = Hash::make($data['password']);
+
+        $user = $this->userRepository->create($data);
+
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->success([
             'user'  => new UserResource($user),
             'token' => $token,
-        ], 'User registered successfully', 201);
+        ], __('messages.user_created'), 201);
     }
 
-    /**
-     * Login user and issue token
-     */
     public function login(LoginRequest $request): JsonResponse
     {
         if (! Auth::attempt($request->only('email', 'password'))) {
-            return response()->error('Invalid credentials', [], 401);
+            return response()->error(__('messages.user_invalid_credential'), 401);
         }
 
         $user = Auth::user();
+
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->success([
             'user'  => new UserResource($user),
             'token' => $token,
-        ], 'Login successful');
+        ], __('messages.user_logged_in'));
     }
 
-    /**
-     * Logout user (revoke tokens)
-     */
     public function logout(): JsonResponse
     {
         Auth::user()->tokens()->delete();
-
-        return response()->success(null, 'Logged out successfully');
+        return response()->success(null, __('messages.user_logged_out'));
     }
 
-    /**
-     * Get authenticated user
-     */
     public function me(): JsonResponse
     {
         return response()->success(new UserResource(Auth::user()));

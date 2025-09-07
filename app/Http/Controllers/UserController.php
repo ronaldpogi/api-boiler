@@ -27,7 +27,7 @@ class UserController extends Controller
     public function store(UserRequest $request): JsonResponse
     {
         $user = $this->userRepository->create($request->validated());
-        return response()->success(new UserResource($user), 'User created successfully', 201);
+        return response()->success(new UserResource($user), __('messages.user_created'), 201);
     }
 
     /**
@@ -45,7 +45,7 @@ class UserController extends Controller
     public function update(UserRequest $request, $id): JsonResponse
     {
         $user = $this->userRepository->update($id, $request->validated());
-        return response()->success(new UserResource($user), 'User updated successfully', 201);
+        return response()->success(new UserResource($user), __('messages.user_updated'));
     }
 
     /**
@@ -54,7 +54,7 @@ class UserController extends Controller
     public function destroy($id): JsonResponse
     {
         $this->userRepository->delete($id);
-        return response()->success(null, 'User deleted successfully');
+        return response()->success([], __('messages.user_deleted'), 204);
     }
 }
 

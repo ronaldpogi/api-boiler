@@ -35,7 +35,7 @@ abstract class BaseRepository
 
     public function update($id, array $data)
     {
-        $record = $this->findOrFail($id);
+        $record = $this->model->findOrFail($id);
         $record->update($data);
         return $record;
     }
